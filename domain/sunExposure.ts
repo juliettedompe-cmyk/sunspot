@@ -7,6 +7,12 @@ export interface SunPosition {
   altitudeDeg: number;
 }
 
+/** Sun must be strictly above this altitude (degrees) to illuminate a terrace. */
+const MIN_SUN_ALTITUDE_DEG = 5;
+
+/** Maximum angular difference between sun azimuth and terrace orientation for sun exposure. */
+const MAX_ANGULAR_DIFF_DEG = 90;
+
 /**
  * Returns the sun position at a given time and location.
  *
@@ -28,18 +34,18 @@ export function getSunPosition(lat: number, lng: number, date: Date): SunPositio
  * Returns true if a terrace is in direct sunlight at the given sun position.
  *
  * Rules:
- *   1. Sun must be more than 5° above the horizon (filters out near-horizon light)
+ *   1. Sun must be more than MIN_SUN_ALTITUDE_DEG above the horizon
  *   2. The angular difference between the sun's compass bearing and the terrace's
- *      facing direction must be less than 90° (sun is within the terrace's front arc)
+ *      facing direction must be less than MAX_ANGULAR_DIFF_DEG
  */
 export function isTerraceSunny(
   terraceOrientation: number,
   sun: SunPosition
 ): boolean {
-  if (sun.altitudeDeg <= 5) return false;
+  if (sun.altitudeDeg <= MIN_SUN_ALTITUDE_DEG) return false;
 
   const diff = Math.abs(sun.azimuthDeg - terraceOrientation);
   const angularDiff = diff > 180 ? 360 - diff : diff;
 
-  return angularDiff < 90;
+  return angularDiff < MAX_ANGULAR_DIFF_DEG;
 }
