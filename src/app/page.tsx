@@ -1,4 +1,4 @@
-import MapView from "@/components/MapView";
+import MapView from "@/views/MapView";
 
 export default function HomePage() {
   return (
