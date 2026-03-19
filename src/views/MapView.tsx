@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState } from "react";
 import { useTerraces } from "@/views/hooks/useTerraces";
 import { useMapLibre } from "@/views/hooks/useMapLibre";
@@ -64,11 +65,21 @@ export default function MapView() {
 
         {/* Header */}
         <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3">
-          <div>
-            <h1 className="text-base font-bold tracking-tight text-gray-900">
-              <span className="text-amber-500">Sun</span>Spot
-            </h1>
-            <p className="text-xs text-gray-400">Terrasses ensoleillées à Paris</p>
+          <div className="flex items-center gap-2.5">
+            <Image
+              src="/logo.png"
+              alt="SunSpot logo"
+              width={36}
+              height={36}
+              className="flex-shrink-0 drop-shadow-sm"
+              priority
+            />
+            <div>
+              <h1 className="text-base font-bold tracking-tight text-gray-900">
+                <span className="text-amber-500">Sun</span>Spot
+              </h1>
+              <p className="text-xs text-gray-400">Terrasses ensoleillées à Paris</p>
+            </div>
           </div>
           <LocationButton
             position={userPosition}
