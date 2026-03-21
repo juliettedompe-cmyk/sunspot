@@ -1,4 +1,6 @@
-import MapView from "@/views/MapView";
+import dynamic from "next/dynamic";
+
+const MapView = dynamic(() => import("@/views/MapView"), { ssr: false });
 
 export default function HomePage() {
   return (

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 const PARIS_CENTER: [number, number] = [2.3522, 48.8566];
 const INITIAL_ZOOM = 13;
-const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
+const MAP_STYLE = "https://demotiles.maplibre.org/style.json";
 
 type MapLibreModule = typeof import("maplibre-gl");
 
