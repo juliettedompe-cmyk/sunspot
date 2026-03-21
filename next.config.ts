@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+   turbopack: {},
   // maplibre-gl uses browser APIs — tell webpack not to process it server-side
   webpack: (config, { isServer }) => {
     if (isServer) {
