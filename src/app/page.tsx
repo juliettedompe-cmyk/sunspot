@@ -1,3 +1,5 @@
+"use client";
+
 import dynamic from "next/dynamic";
 
 const MapView = dynamic(() => import("@/views/MapView"), { ssr: false });
